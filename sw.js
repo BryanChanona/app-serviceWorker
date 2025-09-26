@@ -54,10 +54,6 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-    //solo cachear httpmo https
-    if (!event.request.url.startsWith("http")) {
-        return; // ignorar otras schemes
-    }
     event.respondWith(
         caches.match(event.request).then(cached => {
             if (cached) return cached;
